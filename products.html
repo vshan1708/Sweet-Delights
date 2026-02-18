@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Product Catalog | Sweet Delights</title>
+    
+    <style>
+        .catalog-section { padding: 20px 0 50px 0; }
+        
+        .catalog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .item-card {
+            background: white;
+            padding: 15px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            text-align: center;
+            border: 1px solid #eee;
+            transition: transform 0.3s ease;
+        }
+
+        .item-card img { 
+            width: 100%; height: 180px; object-fit: cover; border-radius: 8px; margin-bottom: 15px;
+        }
+
+        .price-tag { color: #d2691e; font-weight: bold; font-size: 1.1rem; margin-bottom: 10px; }
+
+        .category-title { border-left: 5px solid #d2691e; padding-left: 15px; margin-top: 40px; color: #d2691e; }
+
+        .buy-btn {
+            background-color: #d2691e;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        .buy-btn:hover { background-color: #a0522d; }
+
+        #cart-link {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #ff69b4;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 50px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            text-decoration: none;
+            font-weight: bold;
+            display: none;
+            z-index: 1001;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo"><h1>Sweet Delights</h1></div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="main-content" style="padding: 40px 10%;">
+        <h2 style="text-align: center; font-size: 2.5rem;">Online Shop</h2>
+
+        <div class="catalog-section">
+            <h3 class="category-title">Delicious Pastries</h3>
+            <div class="catalog-grid">
+                <div class="item-card">
+                    <img src="images/Crossaint.jpg" alt="Croissant">
+                    <h3>Butter Croissant</h3>
+                    <p class="price-tag">RM 6.50</p>
+                    <button class="buy-btn" onclick="addToCart('Butter Croissant')">Add to Cart</button>
+                </div>
+                <div class="item-card">
+                    <img src="images/Garlic Bread.jpg" alt="Garlic Bread">
+                    <h3>Garlic Bread</h3>
+                    <p class="price-tag">RM 6.00</p>
+                    <button class="buy-btn" onclick="addToCart('Garlic Bread')">Add to Cart</button>
+                </div>
+                <div class="item-card">
+                    <img src="images/cheese bread.jpg" alt="Cheese Bun">
+                    <h3>Cheese Bun</h3>
+                    <p class="price-tag">RM 4.00</p>
+                    <button class="buy-btn" onclick="addToCart('Cheese Bun')">Add to Cart</button>
+                </div>
+                <div class="item-card">
+                    <img src="images/sausage roll.jpeg" alt="Sausage Roll">
+                    <h3>Sausage Roll</h3>
+                    <p class="price-tag">RM 5.50</p>
+                    <button class="buy-btn" onclick="addToCart('Sausage Roll')">Add to Cart</button>
+                </div>
+                <div class="item-card">
+                    <img src="images/kaya bun.png" alt="Kaya Bun">
+                    <h3>Kaya Bun</h3>
+                    <p class="price-tag">RM 3.50</p>
+                    <button class="buy-btn" onclick="addToCart('Kaya Bun')">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="catalog-section">
+            <h3 class="category-title">Delicious Cakes</h3>
+            <div class="catalog-grid">
+                <div class="item-card">
+                    <img src="images/Chocolate Fudge Cake.jpg" alt="Cake">
+                    <h3>Chocolate Fudge Cake</h3>
+                    <p class="price-tag">RM 45.50</p>
+                    <button class="buy-btn" onclick="addToCart('Chocolate Fudge Cake')">Add to Cart</button>
+                </div>
+                <div class="item-card">
+                    <img src="images/Black Forest Cake.jpg" alt="Cake">
+                    <h3>Black Forest Cake</h3>
+                    <p class="price-tag">RM 50.00</p>
+                    <button class="buy-btn" onclick="addToCart('Black Forest Cake')">Add to Cart</button>
+                </div>
+                <div class="item-card">
+                    <img src="images/red velvet cake.jpg" alt="Cake">
+                    <h3>Red Velvet Cake</h3>
+                    <p class="price-tag">RM 60.00</p>
+                    <button class="buy-btn" onclick="addToCart('Red Velvet Cake')">Add to Cart</button>
+                </div>
+                <div class="item-card">
+                    <img src="images/tiramisu cake.jpg" alt="Cake">
+                    <h3>Tiramisu Cake</h3>
+                    <p class="price-tag">RM 55.00</p>
+                    <button class="buy-btn" onclick="addToCart('Tiramisu Cake')">Add to Cart</button>
+                </div>
+                <div class="item-card">
+                    <img src="images/matcha cake.jpg" alt="Cake">
+                    <h3>Matcha Cake</h3>
+                    <p class="price-tag">RM 55.00</p>
+                    <button class="buy-btn" onclick="addToCart('Matcha Cake')">Add to Cart</button>
+                </div>
+                <div class="item-card">
+                    <img src="images/mango cheesecake.jpg" alt="Cake">
+                    <h3>Mango Cheesecake</h3>
+                    <p class="price-tag">RM 53.00</p>
+                    <button class="buy-btn" onclick="addToCart('Mango Cheesecake')">Add to Cart</button>
+                </div>
+                <div class="item-card">
+                    <img src="images/burnt cheesecake.jpg" alt="Cake">
+                    <h3>Burnt Cheesecake</h3>
+                    <p class="price-tag">RM 48.00</p>
+                    <button class="buy-btn" onclick="addToCart('Burnt Cheesecake')">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <a href="contact.html" id="cart-link">🛒 Go to Checkout (0)</a>
+
+    <script>
+        let count = 0;
+        function addToCart(itemName) {
+            count++;
+            alert(itemName + " has been added to your order!");
+            const cartLink = document.getElementById('cart-link');
+            cartLink.style.display = 'block';
+            cartLink.innerHTML = "🛒 Go to Checkout (" + count + ")";
+        }
+    </script>
+
+    <footer>
+        <p>&copy; 2025 Sweet Delights Bakery. All rights reserved.</p>
+    </footer>
+</body>
+</html>
